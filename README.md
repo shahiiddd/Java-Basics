@@ -1,7 +1,7 @@
 # Java-Basics
 
 Welcome to the Java Basics to Advanced repository! This repository contains a comprehensive collection of Java programs ranging from fundamental concepts to advanced topics.
-📌 About This Repository here
+📌 About This Repository her
 
 This repository is designed to help learners and developers navigate through Java programming. It includes:
 
