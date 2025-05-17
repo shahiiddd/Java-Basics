@@ -1,35 +1,45 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class Main{
-
-    public static void insertionSort(int []arr){
-        for (int i = 0;i<arr.length;i++){
-            int min = arr[i];
-            for (int j=i;j<arr.length;j++){
-
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[] a = new int[n];
+            
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
             }
-            if (min>arr[i+1]){
-                int temp = arr[i];
-                arr[i]=arr[i+1];
-                arr[i+1]=temp;
+            
+            for (int k = 1; k <= n; k++) {
+                long maxSum = 0;
+                
+                for (int moveIdx = 0; moveIdx < n; moveIdx++) {
+                    // Create new array after moving moveIdx to end
+                    int[] temp = new int[n];
+                    int idx = 0;
+                    for (int i = 0; i < n; i++) {
+                        if (i != moveIdx) {
+                            temp[idx++] = a[i];
+                        }
+                    }
+                    temp[idx] = a[moveIdx];
+                    
+                    // Now sum the last k elements
+                    long sum = 0;
+                    for (int i = n - k; i < n; i++) {
+                        sum += temp[i];
+                    }
+                    
+                    maxSum = Math.max(maxSum, sum);
+                }
+                
+                System.out.print(maxSum + " ");
             }
+            System.out.println();
         }
-        for (int i = 0;i<arr.length;i++){
-            System.out.println(arr[i]);
-        }
-    }
-
-    public static void main(String[]args){
-        Scanner sc =new Scanner(System.in);
-        Main ob = new Main();
-        System.out.println("Enter the number of element in array : ");
-        int n = sc.nextInt();
-        int [] arr=new int [n];
-
-        for (int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-        }
-        System .out.println("Using Insertion Sort");
-        insertionSort(arr);
     }
 }
